@@ -27,19 +27,23 @@ class Row extends Component {
       tempArr[id] = "X";
       console.log(tempArr);
       this.setState({ boxMarks: tempArr });
+      return;
     }
-    // } else if (this.state.boxMarks[id] === "X") {
-    //   tempArr[id] = "O";
-    //   this.setState({ boxMarks: tempArr });
-    // } else if (this.state.boxMarks[id] === "O") {
-    //   tempArr[id] = "X";
-    //   this.setState({ boxMarks: tempArr });
-    // }
-  }
+    
+    if (this.state.boxMarks[id] === "X") {
+      tempArr[id] = "O";
+      console.log(this.state.boxMarks);
+      this.setState({ boxMarks: tempArr });
+      return;
+    }
 
-  //   this.state.boxMarks[id] === "X"
-  //     ? this.setState({ mark: "O" })
-  //     : this.setState({ mark: "X" });
+    if (this.state.boxMarks[id] === "O") {
+      tempArr[id] = "X";
+      console.log(this.state.boxMarks);
+      this.setState({ boxMarks: tempArr });
+      return;
+    }
+  }
 
   render() {
     console.log("Row Of Boxes here...");
@@ -59,10 +63,6 @@ class Row extends Component {
 }
 
 class Box extends Component {
-  // constructor() {
-  //   super();
-  // }
-
   // componentDidMount() {
   //   this.changeState = setInterval(this.switchMark, 300);
   // }
@@ -70,7 +70,8 @@ class Box extends Component {
   // componentWillUnmount() {
   //   clearInterval(this.changeState);
   // }
-
+ 
+  
   switchMarkHandle(e) {
     e.preventDefault();
     this.props.switchMark(this.props.boxId);
