@@ -6,16 +6,16 @@ class App extends Component {
     return (
       <div className="container-outer">
         <h1>Tic Tac Toe</h1>
-        <Row />
+        <Board />
       </div>
     );
   }
 }
 
-class Row extends Component {
+class Board extends Component {
   constructor() {
     super();
-    this.state = { boxMarks: ["-", "-", "-"] };
+    this.state = { boxMarks: [["-", "-", "-"], ["-", "-", "-"], ["-", "-", "-"]]};
     this.switchMark = this.switchMark.bind(this);
   }
 
@@ -44,6 +44,32 @@ class Row extends Component {
       return;
     }
   }
+  
+  render() {
+    const rowsForBoard = [];
+    for (let i = 0; i < 3; i++) {
+      rowsForBoard.push(
+        <Row
+          key={"row_" + i}
+          rowId={i}
+          rowMarks={this.state.boxMarks[i]}
+          switchMark={this.switchMark}
+        />
+      );
+    }
+    return <div className="rowsForBoard">{rowsForBoard}</div>;
+  }
+}
+
+
+
+class Row extends Component {
+  // constructor() {
+  //   super();
+  //   this.state = { boxMarks: ["-", "-", "-"] };
+  //   this.switchMark = this.switchMark.bind(this);
+  // }
+
 
   render() {
     console.log("Row Of Boxes here...");
@@ -53,8 +79,8 @@ class Row extends Component {
         <Box
           key={"box_" + i}
           boxId={i}
-          mark={this.state.boxMarks[i]}
-          switchMark={this.switchMark}
+          mark={this.props.rowMarks[i]}
+          switchMark={this.props.switchMark}
         />
       );
     }
