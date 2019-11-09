@@ -20,12 +20,14 @@ class Row extends Component {
   }
 
   switchMark(id) {
-    // const tempArr = this.state.boxMarks;
+    const tempArr = this.state.boxMarks;
     console.log("Switching...", this.state.boxMarks);
-    // console.log(this.state);
-    // if (this.state.boxMarks[id] === "-") {
-    //   tempArr[id] = "X";
-    //   this.setState({ boxMarks: tempArr });
+
+    if (this.state.boxMarks[id] === "-") {
+      tempArr[id] = "X";
+      console.log(tempArr);
+      this.setState({ boxMarks: tempArr });
+    }
     // } else if (this.state.boxMarks[id] === "X") {
     //   tempArr[id] = "O";
     //   this.setState({ boxMarks: tempArr });
@@ -52,7 +54,6 @@ class Row extends Component {
         />
       );
     }
-
     return <div className="rowOfBoxes">{rowOfBoxes}</div>;
   }
 }
@@ -61,25 +62,30 @@ class Box extends Component {
   // constructor() {
   //   super();
   // }
+
   // componentDidMount() {
   //   this.changeState = setInterval(this.switchMark, 300);
   // }
+
   // componentWillUnmount() {
   //   clearInterval(this.changeState);
   // }
+
+  switchMarkHandle(e) {
+    e.preventDefault();
+    this.props.switchMark(this.props.boxId);
+  }
+
   render() {
-    console.log("Box here.");
+    console.log("Box here....", this.props);
     return (
       <div>
-        <button className="box" onClick={this.props.switchMark}>
+        <button className="box" onClick={this.switchMarkHandle.bind(this)}>
           <h1>{this.props.mark}</h1>
         </button>
       </div>
     );
   }
 }
-
-// functionality for Box onClick method
-// onClick={this.props.switchMark(this.props.boxId)}
 
 export default App;
