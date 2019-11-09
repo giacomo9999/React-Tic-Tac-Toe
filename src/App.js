@@ -19,26 +19,26 @@ class Board extends Component {
     this.switchMark = this.switchMark.bind(this);
   }
 
-  switchMark(id) {
+  switchMark(row, box) {
     const tempArr = this.state.boxMarks;
     console.log("Switching...", this.state.boxMarks);
 
-    if (this.state.boxMarks[id] === "-") {
-      tempArr[id] = "X";
+    if (this.state.boxMarks[row][box] === "-") {
+      tempArr[row][box] = "X";
       console.log(tempArr);
       this.setState({ boxMarks: tempArr });
       return;
     }
     
-    if (this.state.boxMarks[id] === "X") {
-      tempArr[id] = "O";
+    if (this.state.boxMarks[row][box] === "X") {
+      tempArr[row][box] = "O";
       console.log(this.state.boxMarks);
       this.setState({ boxMarks: tempArr });
       return;
     }
 
-    if (this.state.boxMarks[id] === "O") {
-      tempArr[id] = "X";
+    if (this.state.boxMarks[row][box] === "O") {
+      tempArr[row][box] = "X";
       console.log(this.state.boxMarks);
       this.setState({ boxMarks: tempArr });
       return;
@@ -79,6 +79,7 @@ class Row extends Component {
         <Box
           key={"box_" + i}
           boxId={i}
+          rowId={this.props.rowId}
           mark={this.props.rowMarks[i]}
           switchMark={this.props.switchMark}
         />
@@ -100,7 +101,7 @@ class Box extends Component {
   
   switchMarkHandle(e) {
     e.preventDefault();
-    this.props.switchMark(this.props.boxId);
+    this.props.switchMark(this.props.rowId, this.props.boxId);
   }
 
   render() {
