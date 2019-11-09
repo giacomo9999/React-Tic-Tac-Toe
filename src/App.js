@@ -16,7 +16,7 @@ class Row extends Component {
   constructor() {
     super();
     this.state = { boxMarks: ["-", "-", "-"] };
-    // this.switchMark = this.switchMark.bind(this);
+    this.switchMark = this.switchMark.bind(this);
   }
 
   switchMark(id) {
@@ -53,7 +53,7 @@ class Row extends Component {
       );
     }
 
-    return <div>{rowOfBoxes}</div>;
+    return <div className="rowOfBoxes">{rowOfBoxes}</div>;
   }
 }
 
@@ -73,7 +73,7 @@ class Box extends Component {
       <div>
         <button
           className="box"
-          onClick={this.props.switchMark(this.props.boxId)}
+          onClick={this.props.switchMark}
         >
           <h1>{this.props.mark}</h1>
         </button>
@@ -82,7 +82,7 @@ class Box extends Component {
   }
 }
 
-// goes in render method of Box
-//
+// functionality for Box onClick method
+// onClick={this.props.switchMark(this.props.boxId)}
 
 export default App;

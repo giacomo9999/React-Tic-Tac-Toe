@@ -28,6 +28,14 @@ Cool Grey 11: #C5D3E2
   float: left;
 }
 
+.rowOfBoxes {
+  /* display: inline-block; */
+  width: 70%;
+  margin: 0 auto;
+  padding: 3px;
+  background-color: #8ebf42;
+}
+
 /* Organizational */
 * {
   padding: 0;
@@ -67,7 +75,7 @@ h4 {
 }
 
 .container-outer {
-  width: 50%;
+  width: 30%;
   height: 300px;
   padding: 10px;
   margin: 20px auto 10px;
