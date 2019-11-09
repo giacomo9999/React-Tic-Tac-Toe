@@ -21,7 +21,7 @@ class Row extends Component {
 
   switchMark(id) {
     // const tempArr = this.state.boxMarks;
-    console.log("Switching...");
+    console.log("Switching...", this.state.boxMarks);
     // console.log(this.state);
     // if (this.state.boxMarks[id] === "-") {
     //   tempArr[id] = "X";
@@ -71,10 +71,7 @@ class Box extends Component {
     console.log("Box here.");
     return (
       <div>
-        <button
-          className="box"
-          onClick={this.props.switchMark}
-        >
+        <button className="box" onClick={this.props.switchMark}>
           <h1>{this.props.mark}</h1>
         </button>
       </div>
